@@ -4,6 +4,5 @@ node_js:
 cache: npm
 script:
   - echo 'Build starts!!'
-  - npm
   - echo 'Testing!'
   - npm run test
