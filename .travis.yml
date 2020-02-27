@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "8"
+cache: yarn
+script:
+  - echo 'Build starts!!'
+  - yarn
+  - echo 'Testing!'
+  - npm run test:prod
