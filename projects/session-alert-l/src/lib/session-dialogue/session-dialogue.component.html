@@ -1,0 +1,44 @@
+<div>
+  <div >
+    <div  class='align-center'>
+      <h3 mat-dialog-title nxHeadline='subsection-small'>{{ data.title }}</h3>
+    </div>
+  </div>
+</div>
+<div mat-dialog-content>
+  <div >
+    <div >
+      <div class="centre-align">
+        <p>
+          {{ data.message }}
+          <mat-chip color="accent" selected>{{ tMin }}:{{ tSec }}</mat-chip>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <div *ngIf="!isExpired" nxLayout='grid' style="width:100%">
+    <div nxRow>
+      <div *ngIf="data.showCancel" nxCol="6" class='centre-align'>
+        <button type="button" (click)="onClickCancel()" nxButton="secondary">
+          {{ data.cancelText }}
+        </button>
+      </div>
+      <div nxCol="6" class='centre-align'>
+        <button type="button" (click)="onClickConfirm()" nxButton="primary">
+          {{ data.confirmText }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isExpired" nxLayout='grid' style="width:100%">
+    <div nxRow>
+      <div nxCol="12" class='centre-align'>
+        <button type="button" (click)="onClickCancel()" nxButton="secondary">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

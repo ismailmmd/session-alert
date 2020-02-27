@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -87,6 +88,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -118,6 +120,42 @@
           }
         }
       }
-    }},
+    },
+    "session-alert-l": {
+      "projectType": "library",
+      "root": "projects/session-alert-l",
+      "sourceRoot": "projects/session-alert-l/src",
+      "prefix": "sa",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/session-alert-l/tsconfig.lib.json",
+            "project": "projects/session-alert-l/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/session-alert-l/src/test.ts",
+            "tsConfig": "projects/session-alert-l/tsconfig.spec.json",
+            "karmaConfig": "projects/session-alert-l/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/session-alert-l/tsconfig.lib.json",
+              "projects/session-alert-l/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
   "defaultProject": "session-alert"
 }
