@@ -6,4 +6,4 @@ script:
   - echo 'Build starts!!'
   - yarn
   - echo 'Testing!'
-  - npm run test:prod
+  - npm run test
