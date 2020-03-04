@@ -1,12 +1,24 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { SessionDialogueService, SessionTimerService } from 'projects/session-alert-l/src/public-api';
+import { MatDialog } from '@angular/material';
 
 describe('AppComponent', () => {
+
   beforeEach(async(() => {
+    const sessionMockService = jasmine.createSpyObj('SessionDialogueService', ['initialise']);
+    sessionMockService.initialise.and.returnValue(null);
+
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
+      providers: [
+        {
+          provide: SessionDialogueService,
+          deps: [SessionTimerService, MatDialog],
+          useValue: sessionMockService
+        }]
     }).compileComponents();
   }));
 
@@ -27,5 +39,14 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to session-alert!');
+  });
+
+  it('should change title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    app.title = 'new-title';
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('new-title');
   });
 });

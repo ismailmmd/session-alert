@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "test-ci": "ng test --browsers=ChromeHeadlessCI --progress=false --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "bundle-report": "ng build --prod --stats-json && webpack-bundle-analyzer dist/session-alert/stats-es5.json"
@@ -45,6 +46,7 @@
     "karma-jasmine-html-reporter": "^1.4.0",
     "ng-packagr": "^5.1.0",
     "protractor": "~5.4.0",
+    "puppeteer": "^2.1.1",
     "ts-node": "~7.0.0",
     "tsickle": "^0.35.0",
     "tslint": "~5.15.0",
