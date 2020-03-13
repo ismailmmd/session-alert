@@ -1,7 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { SessionDialogueService, SessionTimerService } from 'projects/session-alert-l/src/public-api';
-import { MatDialog } from '@angular/material';
+import { SessionDialogueService } from 'projects/session-alert-l/src/public-api';
 
 describe('AppComponent', () => {
 
@@ -16,7 +15,6 @@ describe('AppComponent', () => {
       providers: [
         {
           provide: SessionDialogueService,
-          deps: [SessionTimerService, MatDialog],
           useValue: sessionMockService
         }]
     }).compileComponents();

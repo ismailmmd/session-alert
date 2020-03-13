@@ -32,11 +32,17 @@ export class SessionTimerService {
   private _countDown = 5000;
   private timerSubscription: Subscription;
   private _timer: Observable<number>;
+  /**
+   * Subscription for timer. To trigger dilog on session warning
+   */
   public timeoutExpired: Subject<number> = new Subject<number>();
+  /**
+   * Count down value in @number
+   */
   public countDownObs: Observable<number>;
 
   constructor(@Inject(SESSION_TIMER_CONFIG) private _config: SessionTimerConfig) {
-    console.log('session config data - ' , _config);
+    console.log('session config data: ' , _config);
     if (_config != null) {
       if (_config.countDownTime >= _config.sessionTime) { throw new Error('Invalid Session Timer Configuration'); }
       this._timeoutMilliseconds = +_config.countDownTime.toFixed() * 1000 * 60;
@@ -49,6 +55,9 @@ export class SessionTimerService {
     this.startTimer();
   }
 
+  /**
+   * Start sessoin timer. Usually called on user login
+   */
   public startTimer() {
     if (this.timerSubscription) {
       this.stopTimer();
@@ -56,12 +65,18 @@ export class SessionTimerService {
     this.setSubscription();
   }
 
+  /**
+   * Stops timer and kills timer subscription
+   */
   public stopTimer() {
     if (!this.timerSubscription.closed) {
       this.timerSubscription.unsubscribe();
     }
   }
 
+  /**
+   * Reset session timer, calls @startTimer internally
+   */
   public resetTimer() {
     this.startTimer();
   }

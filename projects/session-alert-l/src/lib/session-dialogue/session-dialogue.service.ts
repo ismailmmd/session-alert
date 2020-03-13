@@ -25,13 +25,14 @@ export class SessionDialogueService {
     this.sessionTimer.startTimer();
     this.sessionTimer.timeoutExpired.subscribe(res => {
       console.log('Session Expire Triggered - ', res);
-      this.dailog.open(SessionDialogueComponent, {
-        panelClass: 'az-no-padding-dialog',
-        hasBackdrop: true,
-        width: '500px', maxHeight: '700px',
-        disableClose: true,
-        data: dialogObject
-      })
+      this.dailog
+        .open(SessionDialogueComponent, {
+          panelClass: 'az-no-padding-dialog',
+          hasBackdrop: true,
+          width: '500px', maxHeight: '700px',
+          disableClose: true,
+          data: dialogObject
+        })
         .afterClosed().subscribe(
           action => {
             if (action === true) {
