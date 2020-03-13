@@ -1,5 +1,7 @@
 # SessionAlert
 
+![Node.js CI](https://github.com/ismail5701/session-alert/workflows/Node.js%20CI/badge.svg?branch=master)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
 
 ## Development server
