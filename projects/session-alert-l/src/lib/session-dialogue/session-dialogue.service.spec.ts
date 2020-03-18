@@ -26,7 +26,7 @@ describe('SessionDialogueService', () => {
         { provide: MatDialog, useValue: mockMatDilog },
         SessionDialogueService
       ]
-    })
+    });
   });
 
   it('should be created', () => {

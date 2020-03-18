@@ -26,7 +26,6 @@ export const SESSION_TIMER_CONFIG = new InjectionToken<SessionTimerConfig>('Sess
 
 export class SessionTimerService {
 
-  private _count = 0;
   private _timeoutMilliseconds = 5000;
   private _sessionTime = 10000;
   private _countDown = 5000;
@@ -42,7 +41,7 @@ export class SessionTimerService {
   public countDownObs: Observable<number>;
 
   constructor(@Inject(SESSION_TIMER_CONFIG) private _config: SessionTimerConfig) {
-    console.log('session config data: ' , _config);
+    console.log('session config data: ', _config);
     if (_config != null) {
       if (_config.countDownTime >= _config.sessionTime) { throw new Error('Invalid Session Timer Configuration'); }
       this._timeoutMilliseconds = +_config.countDownTime.toFixed() * 1000 * 60;
@@ -99,7 +98,11 @@ export class SessionTimerService {
   }
 
   private timerComplete(n: number) {
-    this.timeoutExpired.next(++this._count);
+    this.timeoutExpired.next(this.getTimerCount(n));
+  }
+
+  private getTimerCount(n: number): number {
+    return (n / this._timeoutMilliseconds) + 1;
   }
 
 }
