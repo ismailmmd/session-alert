@@ -60,6 +60,13 @@ describe('SessionTimerService', () => {
     }
   ));
 
+  xit('counter should work', fakeAsync(
+    () => {
+      const service: SessionTimerService = TestBed.get(SessionTimerService);
+      service.startTimer();
+
+    }
+  ));
 
 });
 
