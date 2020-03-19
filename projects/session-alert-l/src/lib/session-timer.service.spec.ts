@@ -1,4 +1,4 @@
-import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
+import { TestBed, fakeAsync, tick, discardPeriodicTasks } from '@angular/core/testing';
 
 import { SessionTimerService, SESSION_TIMER_CONFIG } from './session-timer.service';
 
@@ -60,14 +60,20 @@ describe('SessionTimerService', () => {
     }
   ));
 
-  xit('counter should work', fakeAsync(
+  it('counter should work', fakeAsync(
     () => {
       const service: SessionTimerService = TestBed.get(SessionTimerService);
+      let received: number | undefined;
       service.startTimer();
-
+      tick(1000 * 60);
+      service.countDownObs.subscribe(value => received = value);
+      tick(0);
+      expect(received).toEqual(60 * 1000);
+      tick(1000);
+      expect(received).toEqual(59 * 1000);
+      discardPeriodicTasks();
     }
   ));
-
 });
 
 /**
