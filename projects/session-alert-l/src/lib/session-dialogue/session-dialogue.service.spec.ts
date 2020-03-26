@@ -4,8 +4,9 @@ import { SessionDialogueService } from './session-dialogue.service';
 import { SessionTimerService } from '../session-timer.service';
 import { MatDialog } from '@angular/material';
 import { of, BehaviorSubject } from 'rxjs';
+import { SessionDialogueModal } from './session-dialogue.model';
 
-xdescribe('SessionDialogueService', () => {
+describe('SessionDialogueService', () => {
 
   let sessionMockTimer = null;
   let mockMatDilog = null;
@@ -15,13 +16,13 @@ xdescribe('SessionDialogueService', () => {
     sessionMockTimer = jasmine.createSpyObj('SessionTimerService', ['startTimer', 'countDownObs',
       'timeoutExpired', 'resetTimer', 'stopTimer']);
     sessionMockTimer.startTimer.and.returnValue(null);
-    sessionMockTimer.timeoutExpired.and.returnValue(of(1));
+    sessionMockTimer.timeoutExpired = of(1);
     sessionMockTimer.resetTimer.and.returnValue(null);
     sessionMockTimer.stopTimer.and.returnValue(null);
-    sessionMockTimer.countDownObs.and.returnValue(of(1));
+    sessionMockTimer.countDownObs = of(1);
 
     mockMatDilog = jasmine.createSpyObj('MatDialog', ['open', 'afterClosed']);
-    mockMatDilog.open.and.returnValue(null);
+    mockMatDilog.open.and.returnValue({ afterClosed: () => of(true) });
     mockMatDilog.afterClosed.and.returnValue(of(true));
 
     TestBed.configureTestingModule({
@@ -56,12 +57,20 @@ xdescribe('SessionDialogueService', () => {
 
   it('should initialise dailog with modal', () => {
     const service: SessionDialogueService = TestBed.get(SessionDialogueService);
-    const loggedIn = new BehaviorSubject<boolean>(false);
-    service.initialise(null, loggedIn);
+    const loggedIn = new BehaviorSubject<boolean>(true);
+    service.initialise(new SessionDialogueModal('title', 'message'), loggedIn);
+    expect(mockMatDilog.open).toHaveBeenCalled();
+    expect(sessionMockTimer.resetTimer).toHaveBeenCalled();
+    mockMatDilog.open.and.returnValue({ afterClosed: () => of(false) });
+    service.initialise(new SessionDialogueModal('title', 'message', true, 'ok', 'cancel', true), loggedIn);
+    expect(sessionMockTimer.stopTimer).toHaveBeenCalled();
   });
 
   it('should return counter value', () => {
     const service: SessionDialogueService = TestBed.get(SessionDialogueService);
-    // expect(service.getCountDownObs()).
+    const loggedIn = new BehaviorSubject<boolean>(false);
+    service.initialise(null, loggedIn);
+    service.getCountDownObs().subscribe(res => expect(res).toEqual(1));
   });
+
 });

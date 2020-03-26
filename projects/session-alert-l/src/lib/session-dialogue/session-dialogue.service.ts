@@ -27,7 +27,7 @@ export class SessionDialogueService {
       console.log('Session Expire Triggered - ', res);
       this.dailog
         .open(SessionDialogueComponent, {
-          panelClass: 'az-no-padding-dialog',
+          panelClass: 'no-padding-dialog',
           hasBackdrop: true,
           width: '500px', maxHeight: '700px',
           disableClose: true,

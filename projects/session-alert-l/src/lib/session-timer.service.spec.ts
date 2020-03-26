@@ -97,3 +97,22 @@ describe('Invalid SessionTimerService', () => {
     }
   });
 });
+
+/**
+ * SUITE 3
+ */
+describe('NULL or Empty SessionTimerService Configration', () => {
+
+  beforeEach(() => TestBed.configureTestingModule({
+    providers: [
+      SessionTimerService,
+      { provide: SESSION_TIMER_CONFIG, useValue: {} }
+    ]
+  }));
+
+  it('should log in console', () => {
+    spyOn(console, 'log');
+    TestBed.get(SessionTimerService);
+    expect(console.log).toHaveBeenCalledWith('default session config data used: 10s');
+  });
+});

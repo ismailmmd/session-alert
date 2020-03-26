@@ -41,12 +41,14 @@ export class SessionTimerService {
   public countDownObs: Observable<number>;
 
   constructor(@Inject(SESSION_TIMER_CONFIG) private _config: SessionTimerConfig) {
-    console.log('session config data: ', _config);
-    if (_config != null) {
+    if (_config != null && _config.countDownTime !== undefined && _config.sessionTime !== undefined) {
       if (_config.countDownTime >= _config.sessionTime) { throw new Error('Invalid Session Timer Configuration'); }
       this._timeoutMilliseconds = +_config.countDownTime.toFixed() * 1000 * 60;
       this._sessionTime = +_config.sessionTime.toFixed() * 1000 * 60;
       this._countDown = this._sessionTime - this._timeoutMilliseconds;
+      console.log('session config data: ', _config);
+    } else {
+      console.log('default session config data used: 10s');
     }
     this.timeoutExpired.subscribe(n => {
       console.log('timeoutExpired subject next.. ' + n.toString());
