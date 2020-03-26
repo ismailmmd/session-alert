@@ -1,8 +1,6 @@
 # SessionAlert
 
-[![Build Status](https://travis-ci.org/ismail5701/session-alert.svg?branch=master)](https://travis-ci.org/ismail5701/session-alert)
-
-[![codecov](https://codecov.io/gh/ismail5701/session-alert/branch/master/graph/badge.svg)](https://codecov.io/gh/ismail5701/session-alert)
+[![Build Status](https://travis-ci.org/ismail5701/session-alert.svg?branch=master)](https://travis-ci.org/ismail5701/session-alert) [![codecov](https://codecov.io/gh/ismail5701/session-alert/branch/master/graph/badge.svg)](https://codecov.io/gh/ismail5701/session-alert)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
 
