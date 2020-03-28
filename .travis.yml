@@ -8,18 +8,21 @@ addons:
 cache:
   directories:
      - ./node_modules
+ branches:
+  only:
+    - master
 install:
   - npm install
   - npm install -g codecov
 script:
   - npm run test-ci
   - npm run report-coverage
-#  - npm run build-prod
-#deploy:
-#  provider: pages
-#  skip_cleanup: true
-#  github_token: $GITHUB_API_KEY
-#  local_dir: dist/session-alert
-#  keep_history: true
-#  on:
-#    branch: master
+  - npm run build-prod
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_API_KEY
+  local_dir: dist/session-alert
+  keep_history: true
+  on:
+    branch: master
