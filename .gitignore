@@ -48,3 +48,4 @@ Thumbs.db
 # Coverage Files
 /coverage
 /coverage/*
+package-lock.json
