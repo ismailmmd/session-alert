@@ -1,6 +1,7 @@
 {
   "name": "session-alert",
   "version": "1.0.0",
+  "author": "ismail5701",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

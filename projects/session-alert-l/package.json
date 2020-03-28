@@ -1,6 +1,24 @@
 {
   "name": "session-alert-l",
   "version": "1.0.0",
+  "author": "ismail501",
+  "description": "Session Alert was build as a plug an play component for Angular Projects. This project is to track user session time and alert when its about to get over.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ismail5701/session-alert.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ismail5701/session-alert/issues"
+  },
+  "keywords": [
+    "angular",
+    "typescript",
+    "session",
+    "dialog",
+    "timer"
+  ],
+  "homepage": "https://ismail5701.github.io/session-alert/index.html",
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^8.0.3",
     "@angular/core": "^8.0.3"

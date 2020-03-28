@@ -2,27 +2,30 @@ dist: trusty
 sudo: false
 language: node_js
 node_js:
-  - "10"
+- '10'
 addons:
   chrome: stable
 cache:
   directories:
-     - ./node_modules
- branches:
+  - "./node_modules"
+branches:
   only:
-    - master
+  - master
 install:
-  - npm install
-  - npm install -g codecov
+- npm install
+- npm install -g codecov
 script:
-  - npm run test-ci
-  - npm run report-coverage
-  - npm run build-prod
+- npm run test-ci
+- npm run report-coverage
+- npm run build-prod
+before_deploy:  
+- cd dist/session-alert-l
 deploy:
-  provider: pages
+  provider: npm
+  email: ism5701@gmail.com
   skip_cleanup: true
-  github_token: $GITHUB_API_KEY
-  local_dir: dist/session-alert
-  keep_history: true
+  api_key:
+    secure: 0yyd1YSjz0jMQXKkn6seB1WFN6+eWhIiJGJdn3Ke3PcsO1H7FhF7fxKvywEWHvb4mIQVY5FYstOuecHc8j8WbP9LylVha74FKfKNRaObNUyNXz9warZj2xMwN9EASSA9yQaS0soX51tZYtTWnzmEURvG0a/Fh8LVSB85sNAa4p9pqLzH1WrgjjnmvQvhAKR3mn0ElIGFtiCuVX+M7gAOfgi0Ny1ZeC31KqWc0BbwH/+clW7RzAzjO//38AUkeS83bc22jq566h+icCCj4LTh3fAc8Sh7cVKY1yDj1mKV9uzRG3Hw5PSpu9ZJUs5CcJIbtq+PkPq6GxH5cz2To9y4jstogApQBPJ0OpbEaW5GMy3TxvrsXZ5V2HP/k5R5M8yj+ByDynjWa1+ZfaylxVeIIKO+XGoB2dRTFTonB5Fh5SMHE8j8yYAGWH3U+latR12l7EB14iUUEGB1NRxjP+NGdExccKkyj1vlBora8JiQyrecFLVevIM94bxBYCqy4BRaHl/4jMBBmF2Tc1d0+DPumwxYp6MRH6sEFI1oqD3mfE8SyZMdZnXE7UxTl/HZLEEjl8yVdOdD/tY2vSjpFGZpkGjI19S788Cj4N/QCY0u+aJDY/cK17NIuzrLB/4ybPbg4zKRen5KUsA0GnqUhlT1mD2qDYs3LEJhFUGgD+7o6DA=
   on:
-    branch: master
+    tags: true
+    repo: ismail5701/session-alert
