@@ -14,3 +14,12 @@ install:
 script:
   - npm run test-ci
   - npm run report-coverage
+  - npm run build-prod
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/session-alert
+  keep_history: true
+  on:
+    branch: master
