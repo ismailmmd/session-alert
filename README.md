@@ -104,5 +104,4 @@ When contributing to this repository, please first discuss the change you wish t
 1.0.0
 
 ## License
-
-yet to add
+MIT License
