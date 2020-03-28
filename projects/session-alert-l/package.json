@@ -1,6 +1,6 @@
 {
   "name": "session-alert-l",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "ismail501",
   "description": "Session Alert was build as a plug an play component for Angular Projects. This project is to track user session time and alert when its about to get over.",
   "repository": {
