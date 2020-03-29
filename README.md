@@ -1,7 +1,7 @@
 
 # SessionAlert  
 
-[![Build Status](https://travis-ci.org/ismail5701/session-alert.svg?branch=master)](https://travis-ci.org/ismail5701/session-alert) [![codecov](https://codecov.io/gh/ismail5701/session-alert/branch/master/graph/badge.svg)](https://codecov.io/gh/ismail5701/session-alert)
+[![Build Status](https://travis-ci.org/ismail5701/session-alert.svg?branch=master)](https://travis-ci.org/ismail5701/session-alert) [![codecov](https://codecov.io/gh/ismail5701/session-alert/branch/master/graph/badge.svg)](https://codecov.io/gh/ismail5701/session-alert)   ![npm](https://img.shields.io/npm/v/session-alert-l?label=version&logo=npm)   ![npm](https://img.shields.io/npm/dt/session-alert-l?color=blueviolet&logo=npm)  ![npm bundle size](https://img.shields.io/bundlephobia/min/session-alert-l)
 
 Session Alert was build as a plug an play component for [Angular](https://github.com/angular/angular-cli) Projects. This project is to track user session time and alert when its about to get over.
 
